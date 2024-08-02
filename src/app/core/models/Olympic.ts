@@ -1,12 +1,8 @@
 // TODO: create here a typescript interface for an olympic country
 //creation du model avec key:type
-export interface Participation {
-  id: number;
-  year: number;
-  city: string;
-  medalsCount: number;
-  athleteCount: number;
-}
+
+
+import {Participation} from "./Participation";
 
 export interface OlympicData {
   id: number;
