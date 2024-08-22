@@ -31,11 +31,13 @@ export class DashboardComponent implements OnInit, OnDestroy, AfterViewInit {
   ngOnInit() {
     // Méthode appelée lors de l'initialisation du composant
     this.subscriptions.add(
+      //appel observable olympicService.loadInitialData()
       this.olympicService.loadInitialData().subscribe()
       // J'ajoute un abonnement pour charger les données initiales à partir du service OlympicService
     );
 
     this.subscriptions.add(
+      //appel observable olympicService.getOlympics()
       this.olympicService.getOlympics().subscribe(data => {
         this.olympicData = data;
         // Je mets à jour la propriété olympicData avec les données reçues
