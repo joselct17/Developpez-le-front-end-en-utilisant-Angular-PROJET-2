@@ -6,29 +6,30 @@ import { catchError, tap } from 'rxjs/operators';
 import { OlympicData } from 'src/app/core/models/Olympic';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root', // Fournit ce service à la racine de l'application, rendant ce service disponible partout dans l'application
 })
 export class OlympicService {
-  private olympicUrl = './assets/mock/olympic.json';
-  //rajout de OlympicData[]
-  private olympics$ = new BehaviorSubject<OlympicData[]>([]);
+  private olympicUrl = './assets/mock/olympic.json'; // URL de l'emplacement du fichier JSON contenant les données olympiques
 
-  constructor(private http: HttpClient) {}
+  private olympics$ = new BehaviorSubject<OlympicData[]>([]); // BehaviorSubject pour stocker et émettre les données olympiques. Initialisé avec un tableau vide
 
+  constructor(private http: HttpClient) {} // Injection du service HttpClient pour effectuer des requêtes HTTP
+
+  // Méthode pour charger les données initiales
   loadInitialData() {
-    return this.http.get<OlympicData[]>(this.olympicUrl).pipe(
-      tap((value) => this.olympics$.next(value)),
+    return this.http.get<OlympicData[]>(this.olympicUrl).pipe( // Effectue une requête HTTP GET pour récupérer les données olympiques
+      tap((value) => this.olympics$.next(value)), // Utilise l'opérateur tap pour mettre à jour les données du BehaviorSubject avec les données récupérées
       catchError((error, caught) => {
-        // TODO: improve error handling
-        console.error(error);
-        // can be useful to end loading state and let the user know something went wrong
-        this.olympics$.next([]);
-        return of([]);
+        // Gestion des erreurs
+        console.error(error); // Affiche l'erreur dans la console
+        this.olympics$.next([]); // Met à jour le BehaviorSubject avec un tableau vide en cas d'erreur
+        return of([]); // Retourne un observable émettant un tableau vide
       })
     );
   }
 
+  // Méthode pour obtenir les données olympiques en tant qu'observable
   getOlympics() {
-    return this.olympics$.asObservable();
+    return this.olympics$.asObservable(); // Retourne le BehaviorSubject en tant qu'observable pour permettre aux autres parties de l'application de s'abonner aux mises à jour des données olympiques
   }
 }
