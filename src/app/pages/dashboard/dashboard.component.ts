@@ -14,6 +14,7 @@ Chart.register(...registerables);
 })
 export class DashboardComponent implements OnInit, OnDestroy, AfterViewInit {
   olympicData: OlympicData[] = [];
+  cityCount:number=0;
   private subscriptions: Subscription = new Subscription();
   private chart: Chart | undefined;
 
@@ -30,11 +31,22 @@ export class DashboardComponent implements OnInit, OnDestroy, AfterViewInit {
     this.subscriptions.add(
       this.olympicService.getOlympics().subscribe(data => {
         this.olympicData = data;
+        this.calculateCityCount();
         this.createChart();
       })
     );
   }
+  calculateCityCount() {
+    const cities = new Set<string>();
 
+    this.olympicData.forEach(country => {
+      country.participations.forEach(participation => {
+        cities.add(participation.city);
+      });
+    });
+
+    this.cityCount = cities.size;
+  }
   ngAfterViewInit() {
     if (this.olympicData.length) {
       this.createChart();
