@@ -1,0 +1,54 @@
+.detail-container {
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  background-color: #16959f;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.country-info {
+  margin-bottom: 20px;
+}
+
+canvas {
+  width: 100%;
+  height: 400px;
+}
+
+button {
+  background-color: #16959f;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 20px;
+}
+
+button:hover {
+  background-color: #127a76;
+}
+/* Container for the boxes */
+.country-info {
+  display: flex; /* Display boxes in a row */
+  justify-content: space-evenly; /* Space them evenly */
+  margin-top: 20px; /* Space above the boxes */
+}
+/* Style for the information boxes */
+.info-box {
+  border: 2px solid #16959f; /* Border color and thickness */
+  border-radius: 8px; /* Rounded corners */
+  padding: 15px; /* Padding inside the box */
+  text-align: center; /* Center the text */
+  width: 150px; /* Fixed width of the box */
+  font-family: 'Arial', sans-serif; /* Font family */
+}
