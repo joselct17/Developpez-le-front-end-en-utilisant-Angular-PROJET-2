@@ -1,54 +1,63 @@
 .detail-container {
-  text-align: center;
-  padding: 20px;
+  text-align: center; /* Centrer le texte */
+  padding: 20px; /* Espacement intérieur */
 }
 
 h1 {
-  background-color: #16959f;
-  color: white;
-  padding: 10px;
-  border-radius: 8px;
-  text-align: center;
-  font-family: 'Arial', sans-serif;
-  font-size: 1.5rem;
-  margin-bottom: 20px;
+  background-color: #16959f; /* Couleur de fond de l'en-tête */
+  color: white; /* Couleur du texte */
+  padding: 10px 20px; /* Espacement intérieur de l'en-tête */
+  border-radius: 8px; /* Bords arrondis */
+  text-align: center; /* Centrer le texte */
+  font-family: 'Arial', sans-serif; /* Famille de police */
+  font-size: 1.5rem; /* Taille de la police */
+  margin-bottom: 20px; /* Espace en dessous du titre */
 }
 
 .country-info {
-  margin-bottom: 20px;
+  margin-bottom: 20px; /* Espace en dessous des informations du pays */
 }
 
 canvas {
-  width: 100%;
-  height: 400px;
+  width: 100%; /* Largeur à 100% */
+  height: 400px; /* Hauteur fixe du canvas */
 }
 
 button {
-  background-color: #16959f;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 1rem;
-  margin-top: 20px;
+  background-color: #16959f; /* Couleur de fond du bouton */
+  color: white; /* Couleur du texte du bouton */
+  padding: 10px 20px; /* Espacement intérieur du bouton */
+  border: none; /* Pas de bordure */
+  border-radius: 8px; /* Bords arrondis */
+  cursor: pointer; /* Pointeur en forme de main */
+  font-size: 1rem; /* Taille de la police */
+  margin-top: 20px; /* Espace au-dessus du bouton */
 }
 
 button:hover {
-  background-color: #127a76;
+  background-color: #127a76; /* Couleur de fond lors du survol */
 }
-/* Container for the boxes */
+
+/* Conteneur pour les boîtes d'informations */
 .country-info {
-  display: flex; /* Display boxes in a row */
-  justify-content: space-evenly; /* Space them evenly */
-  margin-top: 20px; /* Space above the boxes */
+  display: flex; /* Afficher les boîtes en ligne */
+  justify-content: space-evenly; /* Les espacer uniformément */
+  margin-top: 20px; /* Espacement au-dessus des boîtes */
 }
-/* Style for the information boxes */
+
+/* Style pour les boîtes d'information */
 .info-box {
-  border: 2px solid #16959f; /* Border color and thickness */
-  border-radius: 8px; /* Rounded corners */
-  padding: 15px; /* Padding inside the box */
-  text-align: center; /* Center the text */
-  width: 150px; /* Fixed width of the box */
-  font-family: 'Arial', sans-serif; /* Font family */
+  border: 2px solid #16959f; /* Couleur et épaisseur de la bordure */
+  border-radius: 8px; /* Bords arrondis */
+  padding: 15px; /* Espacement intérieur de la boîte */
+  text-align: center; /* Centrer le texte */
+  width: 150px; /* Largeur fixe de la boîte */
+  font-family: 'Arial', sans-serif; /* Famille de police */
 }
+
+.info-box .number {
+  font-size: 1.5rem; /* Taille plus grande de la police pour le numéro */
+  font-weight: bold; /* Numéro en gras */
+  color: black; /* Couleur du texte en noir */
+}
+
