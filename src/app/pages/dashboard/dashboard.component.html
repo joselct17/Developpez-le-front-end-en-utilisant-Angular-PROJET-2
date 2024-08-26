@@ -1,14 +1,21 @@
 <div class="dashboard-container">
   <!-- Je crée un conteneur div avec une classe CSS pour la mise en forme du tableau de bord -->
-  <h1>Olympic Dashboard</h1>
+  <h1>Medals per Country</h1>
   <!-- J'affiche un titre pour le tableau de bord des Jeux Olympiques -->
-  <div>
-    <p>Number of JOs:</p>
-    <!-- J'affiche un paragraphe avec le texte "Number of JOs:" -->
-  </div>
-  <div>
-    Number of countries : {{olympicData.length}}
-    <!-- J'affiche le nombre de pays en utilisant la longueur du tableau olympicData -->
+  <div class="box-container">
+    <div class="info-box">
+      <p>Number of JOs:</p>
+      <!-- J'affiche un paragraphe avec le texte "Number of JOs:" -->
+      <div class="number">
+
+      </div>
+    </div>
+    <div class="info-box">
+      <h2>Number of countries : {{olympicData.length}}</h2>
+      <div class="number">
+
+      </div>
+    </div>
   </div>
   <div *ngIf="olympicData && olympicData.length">
     <!-- J'utilise une directive conditionnelle pour vérifier si les données olympicData existent et ont une longueur supérieure à 0 -->
