@@ -2,19 +2,22 @@
   <h1>{{ participation.country }} - Olympic History</h1>
   <div class="country-info">
     <div class="info-box">
-      <p>
-        <strong>Total Participations:</strong> {{ participation.participations.length }}
-      </p>
+        <strong>Total Participations</strong>
+        <div class="number">
+      {{ participation.participations.length }}
+        </div>
     </div>
     <div class="info-box">
-      <p>
-        <strong>Total Medals:</strong> {{ totalMedals }}
-      </p>
+        <strong>Total Medals</strong>
+        <div class="number">
+          {{ totalMedals }}
+        </div>
     </div>
     <div class="info-box">
-      <p>
-        <strong>Total Athletes:</strong> {{ totalAthletes }}
-      </p>
+        <strong>Total Athletes</strong>
+        <div class="number">
+      {{ totalAthletes }}
+        </div>
     </div>
   </div>
   <div>
