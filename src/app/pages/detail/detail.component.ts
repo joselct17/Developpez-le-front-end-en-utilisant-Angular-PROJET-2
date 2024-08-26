@@ -48,7 +48,7 @@ export class DetailComponent implements OnInit, OnDestroy, AfterViewInit {
 
   createChart() {
     const chartElement = document.getElementById('detailChart') as HTMLCanvasElement;
-    if (!chartElement) {
+    if (!chartElement || !this.participation) {
       return;
     }
 
