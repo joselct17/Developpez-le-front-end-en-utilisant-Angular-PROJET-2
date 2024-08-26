@@ -8,42 +8,44 @@ canvas {
 }
 
 h1 {
-  background-color: #16959f; /* Background color for the header */
-  color: white; /* Text color */
-  padding: 10px 20px; /* Padding inside the header */
-  border-radius: 8px; /* Rounded corners */
-  text-align: center; /* Center the text */
-  font-family: 'Arial', sans-serif; /* Font family */
-  font-size: 1.5rem; /* Font size */
-  display: inline-block; /* Keep the box as wide as the content */
-  margin-bottom: 20px; /* Space below the heading */
-}
-/* Container for the boxes */
-.box-container {
-  display: flex; /* Display boxes in a row */
-  justify-content: space-evenly; /* Space them evenly */
-  margin-top: 20px; /* Space above the boxes */
+  background-color: #16959f; /* Couleur de fond pour l'en-tête */
+  color: white; /* Couleur du texte */
+  padding: 10px 20px; /* Espacement intérieur de l'en-tête */
+  border-radius: 8px; /* Bords arrondis */
+  text-align: center; /* Centrer le texte */
+  font-family: 'Arial', sans-serif; /* Famille de police */
+  font-size: 1.5rem; /* Taille de la police */
+  display: inline-block; /* Garder la boîte aussi large que le contenu */
+  margin-bottom: 20px; /* Espacement en dessous du titre */
 }
 
-/* Style for the information boxes */
+/* Conteneur pour les boîtes */
+.box-container {
+  display: flex; /* Afficher les boîtes en ligne */
+  justify-content: center; /* Les espacer uniformément */
+  margin-top: 20px; /* Espacement au-dessus des boîtes */
+  gap: 50px;
+}
+
+/* Style pour les boîtes d'information */
 .info-box {
-  border: 2px solid #16959f; /* Border color and thickness */
-  border-radius: 8px; /* Rounded corners */
-  padding: 15px; /* Padding inside the box */
-  text-align: center; /* Center the text */
-  width: 150px; /* Fixed width of the box */
-  font-family: 'Arial', sans-serif; /* Font family */
+  border: 2px solid #16959f; /* Couleur et épaisseur de la bordure */
+  border-radius: 8px; /* Bords arrondis */
+  padding: 15px; /* Espacement intérieur de la boîte */
+  text-align: center; /* Centrer le texte */
+  width: 150px; /* Largeur fixe de la boîte */
+  font-family: 'Arial', sans-serif; /* Famille de police */
 }
 
 .info-box h2 {
-  font-size: 1rem; /* Smaller font size for the label */
-  color: #555555; /* Light gray color */
-  margin: 0; /* Remove default margin */
-  margin-bottom: 10px; /* Space below the label */
+  font-size: 1rem; /* Taille plus petite de la police pour le label */
+  color: #555555; /* Couleur gris clair */
+  margin: 0; /* Supprimer la marge par défaut */
+  margin-bottom: 10px; /* Espacement en dessous du label */
 }
 
 .info-box .number {
-  font-size: 1.5rem; /* Larger font size for the number */
-  font-weight: bold; /* Bold number */
-  color: black; /* Black text color */
+  font-size: 1.5rem; /* Taille plus grande de la police pour le numéro */
+  font-weight: bold; /* Numéro en gras */
+  color: black; /* Couleur du texte noir */
 }
