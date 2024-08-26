@@ -4,16 +4,16 @@
   <!-- J'affiche un titre pour le tableau de bord des Jeux Olympiques -->
   <div class="box-container">
     <div class="info-box">
-      <p>Number of JOs:</p>
+      <h2>Number of JOs:</h2>
       <!-- J'affiche un paragraphe avec le texte "Number of JOs:" -->
       <div class="number">
-
+        {{ cityCount }}
       </div>
     </div>
     <div class="info-box">
-      <h2>Number of countries : {{olympicData.length}}</h2>
+      <h2>Number of countries : </h2>
       <div class="number">
-
+        {{olympicData.length}}
       </div>
     </div>
   </div>
