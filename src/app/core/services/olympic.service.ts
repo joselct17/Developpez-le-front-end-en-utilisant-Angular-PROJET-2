@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {BehaviorSubject, of} from 'rxjs';
+import {BehaviorSubject, map, of} from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 //import de OlympicData pour le rajouter dans le type de olympics$ pour eviter les any
 import { OlympicData } from 'src/app/core/models/Olympic';
@@ -31,5 +31,16 @@ export class OlympicService {
   // Méthode pour obtenir les données olympiques en tant qu'observable
   getOlympics() {
     return this.olympics$.asObservable(); // Retourne le BehaviorSubject en tant qu'observable pour permettre aux autres parties de l'application de s'abonner aux mises à jour des données olympiques
+  }
+
+  // Nouvelle méthode pour obtenir les données d'un pays spécifique par ID
+  getOlympicById(id: number | undefined) {
+    return this.olympics$.pipe(
+      map((olympics) => olympics.find((country) => country.id === id)),
+      catchError((error) => {
+        console.error('Error finding country by ID:', error);
+        return of(undefined);
+      })
+    );
   }
 }
