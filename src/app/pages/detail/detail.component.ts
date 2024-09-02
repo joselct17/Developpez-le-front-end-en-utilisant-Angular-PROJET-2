@@ -77,7 +77,6 @@ export class DetailComponent implements OnInit, OnDestroy, AfterViewInit {
         label: 'Medals Over the Years',
         data: this.participation?.participations.map(part => part.medalsCount) || [],
         borderColor: '#16959f',
-        backgroundColor: 'rgba(22, 149, 159, 0.3)',
         fill: true
       }]
     };

@@ -1,9 +1,11 @@
 .detail-container {
   text-align: center; /* Centrer le texte */
   padding: 20px; /* Espacement intérieur */
+
 }
 
 h1 {
+  display: inline-block;
   background-color: #16959f; /* Couleur de fond de l'en-tête */
   color: white; /* Couleur du texte */
   padding: 10px 20px; /* Espacement intérieur de l'en-tête */
