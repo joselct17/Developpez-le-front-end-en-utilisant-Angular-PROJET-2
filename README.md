@@ -2,7 +2,7 @@
 
 ## Description
 
-Ce projet est une application web développée en Angular qui permet aux utilisateurs de visualiser les données des Jeux Olympiques sous forme de graphiques. L'application affiche le nombre de médailles par pays et d'autres informations pertinentes. Les données sont stockées dans un fichier JSON local et simulées à l'aide d'un outil comme Mockoon.
+Ce projet est une application web développée en Angular qui permet aux utilisateurs de visualiser les données des Jeux Olympiques sous forme de graphiques. L'application affiche le nombre de médailles par pays et d'autres informations pertinentes. Les données sont stockées dans un fichier JSON.
 
 ## Prérequis
 
