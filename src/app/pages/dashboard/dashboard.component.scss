@@ -49,3 +49,17 @@ h1 {
   font-weight: bold; /* Numéro en gras */
   color: black; /* Couleur du texte noir */
 }
+
+/* Media Query pour les petits écrans (mode mobile) */
+@media screen and (max-width: 768px) {
+  .country-info {
+    display: block; /* Passe en mode bloc */
+  }
+
+  .info-box {
+    align-items: center;
+    max-width: 100%; /* Chaque boîte occupe toute la largeur */
+    margin-bottom: 20px; /* Ajoute un espacement entre les boîtes */
+  }
+
+}
