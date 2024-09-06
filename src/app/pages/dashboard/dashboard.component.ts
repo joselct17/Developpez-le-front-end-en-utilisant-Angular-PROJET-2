@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { OlympicService } from 'src/app/core/services/olympic.service';
 import { OlympicData } from 'src/app/core/models/Olympic';
-import { Chart, ChartConfiguration, ChartData, registerables } from 'chart.js';
+import {ActiveElement, Chart, ChartConfiguration, ChartData, ChartEvent, registerables } from 'chart.js';
 import { Router } from '@angular/router';  // Assurez-vous d'importer Router
 
 Chart.register(...registerables);
@@ -85,16 +85,16 @@ export class DashboardComponent implements OnInit, OnDestroy {
           animateScale: true,
           animateRotate: true
         },
-        onClick: (event: any, elements: string | any[]) => {
+        onClick: (event: ChartEvent, elements: ActiveElement[]) => {
           if (elements.length > 0) {
-            const index = elements[0].index;
+            const index = elements[0].index;  // Accès à l'index de l'élément
             const selectedCountry = this.olympicData[index];
             if (selectedCountry) {
-              this.router.navigate(['/details', selectedCountry.id]);  // Utilisez this.router ici pour la navigation
+              this.router.navigate(['/details', selectedCountry.id]);  // Utilisation de this.router pour la navigation
             }
           }
         }
-      } as any
+      }
     };
 
     this.chart = new Chart(chartElement, chartConfig as any);
