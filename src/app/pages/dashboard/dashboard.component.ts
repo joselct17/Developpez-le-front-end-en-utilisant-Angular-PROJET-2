@@ -20,7 +20,7 @@ export class DashboardComponent implements OnInit, OnDestroy, AfterViewInit {
 
   constructor(
     private olympicService: OlympicService,
-    private router: Router  // Injectez Router ici
+    private router: Router
   ) { }
 
   ngOnInit() {
