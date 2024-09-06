@@ -26,20 +26,14 @@ export class DetailComponent implements OnInit, OnDestroy {
 
 
   ngOnInit() {
-    // Récupère l'ID du pays à partir de l'URL
     const countryId = +this.route.snapshot.paramMap.get('id')!;
 
-    // Appel à loadInitialData pour charger les données initiales
     this.subscription.add(
       this.olympicService.loadInitialData().subscribe(() => {
-        // Maintenant que les données sont chargées, on peut appeler getOlympicById
         this.subscription.add(
           this.olympicService.getOlympicById(countryId).subscribe(data => {
             if (data) {
-              // Si les données du pays sont trouvées, on les stocke
               this.participation = data;
-
-              // Calcul des totaux
               this.totalMedals = data.participations.reduce((acc, part) => acc + part.medalsCount, 0);
               this.totalAthletes = data.participations.reduce((acc, part) => acc + part.athleteCount, 0);
 
@@ -48,7 +42,6 @@ export class DetailComponent implements OnInit, OnDestroy {
                 this.createChart();
               }, 0);
             } else {
-              // Vous pouvez également rediriger vers une page NotFound si souhaité
               this.router.navigate(['/not-found']);
             }
           })
