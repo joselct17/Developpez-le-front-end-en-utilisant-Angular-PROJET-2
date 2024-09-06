@@ -34,7 +34,7 @@ export class OlympicService {
   }
 
   // Nouvelle méthode pour obtenir les données d'un pays spécifique par ID
-  getOlympicById(id: number | undefined) {
+  getOlympicById(id: number) {
     return this.olympics$.pipe(
       map((olympics) => olympics.find((country) => country.id === id)),
       catchError((error) => {
