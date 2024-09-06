@@ -1,44 +1,47 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {BehaviorSubject, map, of} from 'rxjs';
+import {BehaviorSubject, map, Observable, of} from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 //import de OlympicData pour le rajouter dans le type de olympics$ pour eviter les any
 import { OlympicData } from 'src/app/core/models/Olympic';
+import {Router} from "@angular/router";
 
 @Injectable({
-  providedIn: 'root', // Fournit ce service à la racine de l'application, rendant ce service disponible partout dans l'application
+  providedIn: 'root',
 })
 export class OlympicService {
-  private olympicUrl = './assets/mock/olympic.json'; // URL de l'emplacement du fichier JSON contenant les données olympiques
+  private olympicUrl:string = './assets/mock/olympic.json';
 
-  private olympics$ = new BehaviorSubject<OlympicData[]>([]); // BehaviorSubject pour stocker et émettre les données olympiques. Initialisé avec un tableau vide
+  private olympics$:BehaviorSubject<OlympicData[]> = new BehaviorSubject<OlympicData[]>([]);
 
-  constructor(private http: HttpClient) {} // Injection du service HttpClient pour effectuer des requêtes HTTP
+  constructor(private http: HttpClient, private router: Router) {}
 
   // Méthode pour charger les données initiales
-  loadInitialData() {
-    return this.http.get<OlympicData[]>(this.olympicUrl).pipe( // Effectue une requête HTTP GET pour récupérer les données olympiques
-      tap((value) => this.olympics$.next(value)), // Utilise l'opérateur tap pour mettre à jour les données du BehaviorSubject avec les données récupérées
-      catchError((error, caught) => {
+  loadInitialData():Observable<OlympicData[]> {
+    return this.http.get<OlympicData[]>(this.olympicUrl).pipe(
+      tap((value:OlympicData[]) => this.olympics$.next(value)),
+      catchError((error, caught:Observable<OlympicData[]>) => {
         // Gestion des erreurs
-        console.error(error); // Affiche l'erreur dans la console
-        this.olympics$.next([]); // Met à jour le BehaviorSubject avec un tableau vide en cas d'erreur
-        return of([]); // Retourne un observable émettant un tableau vide
+        console.error(error);
+        this.olympics$.next([]);
+        return caught;
       })
     );
   }
 
   // Méthode pour obtenir les données olympiques en tant qu'observable
-  getOlympics() {
-    return this.olympics$.asObservable(); // Retourne le BehaviorSubject en tant qu'observable pour permettre aux autres parties de l'application de s'abonner aux mises à jour des données olympiques
+  getOlympics(): Observable<OlympicData[]> {
+    const olympics:Observable<OlympicData[]> = this.olympics$.asObservable()
+    return olympics ;
   }
 
   // Nouvelle méthode pour obtenir les données d'un pays spécifique par ID
-  getOlympicById(id: number) {
+  getOlympicById(id: number):Observable<OlympicData|undefined> {
     return this.olympics$.pipe(
-      map((olympics) => olympics.find((country) => country.id === id)),
+      map((olympics:OlympicData[]) => olympics.find((country:OlympicData):boolean => country.id === id)),
       catchError((error) => {
         console.error('Error finding country by ID:', error);
+        this.router.navigate(['**']);
         return of(undefined);
       })
     );
