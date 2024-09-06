@@ -63,3 +63,16 @@ button:hover {
   color: black; /* Couleur du texte en noir */
 }
 
+/* Media Query pour les petits écrans (mode mobile) */
+@media screen and (max-width: 768px) {
+  .country-info {
+    display: block; /* Passe en mode bloc */
+  }
+
+  .info-box {
+    width: calc(100% - 40px); /* Largeur ajustée pour tenir compte du padding/margin */
+    margin: 0 auto 20px auto; /* Centrer et ajouter un espace entre les boîtes */
+  }
+}
+
+
