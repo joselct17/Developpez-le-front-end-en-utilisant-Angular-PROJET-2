@@ -41,7 +41,7 @@ export class OlympicService {
       map((olympics:OlympicData[]) => olympics.find((country:OlympicData):boolean => country.id === id)),
       catchError((error) => {
         console.error('Error finding country by ID:', error);
-        this.router.navigate(['**']);
+        this.router.navigate(['/not-found']);
         return of(undefined);
       })
     );
