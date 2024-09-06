@@ -22,7 +22,7 @@ export class OlympicService {
       tap((value:OlympicData[]) => this.olympics$.next(value)),
       catchError((error, caught:Observable<OlympicData[]>) => {
         // Gestion des erreurs
-        console.error(error);
+        console.error('Error finding data',error);
         this.olympics$.next([]);
         return caught;
       })
