@@ -12,7 +12,7 @@ Chart.register(...registerables);
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit, OnDestroy, AfterViewInit {
+export class DashboardComponent implements OnInit, OnDestroy {
   olympicData: OlympicData[] = [];
   cityCount:number=0;
   private subscriptions: Subscription = new Subscription();
@@ -46,11 +46,6 @@ export class DashboardComponent implements OnInit, OnDestroy, AfterViewInit {
     });
 
     this.cityCount = cities.size;
-  }
-  ngAfterViewInit() {
-    if (this.olympicData.length) {
-      this.createChart();
-    }
   }
 
   createChart() {
