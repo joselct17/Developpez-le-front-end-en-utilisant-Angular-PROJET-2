@@ -3,7 +3,7 @@ import { Subscription } from 'rxjs';
 import { OlympicService } from '../../core/services/olympic.service';
 import { Chart, ChartData, ChartConfiguration } from 'chart.js';
 import { OlympicData } from '../../core/models/Olympic';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-detail',
@@ -20,43 +20,44 @@ export class DetailComponent implements OnInit, OnDestroy {
 
   constructor(
     private olympicService: OlympicService,
-    private route: ActivatedRoute  // Injecter ActivatedRoute pour récupérer l'ID
+    private route: ActivatedRoute ,
+    private router:Router// Injecter ActivatedRoute pour récupérer l'ID
   ) { }
 
+
   ngOnInit() {
-    //Appel des données au chargement
-    this.subscription.add(
-      this.olympicService.loadInitialData().subscribe()
-    );
-    // Récupère l'ID du pays à partir de l'URL. 'snapshot' prend une image instantanée des paramètres de la route.
-    // Le '!' à la fin indique à TypeScript que l'on sait que 'id' ne sera pas null ou undefined.
+    // Récupère l'ID du pays à partir de l'URL
     const countryId = +this.route.snapshot.paramMap.get('id')!;
 
-    // Ajoute un abonnement à la liste des abonnements pour gérer la désinscription automatique à la destruction du composant.
+    // Appel à loadInitialData pour charger les données initiales
     this.subscription.add(
-      // Appel au service pour récupérer les données olympiques du pays correspondant à l'ID.
-      this.olympicService.getOlympicById(countryId).subscribe(data => {
-        // Si les données sont trouvées pour ce pays (c'est-à-dire que 'data' n'est pas null ou undefined) :
-        if (data) {
-          // Stocke les données du pays récupérées dans la propriété 'participation' du composant.
-          this.participation = data;
+      this.olympicService.loadInitialData().subscribe(() => {
+        // Maintenant que les données sont chargées, on peut appeler getOlympicById
+        this.subscription.add(
+          this.olympicService.getOlympicById(countryId).subscribe(data => {
+            if (data) {
+              // Si les données du pays sont trouvées, on les stocke
+              this.participation = data;
 
-          // Calcule le nombre total de médailles remportées par ce pays sur toutes ses participations
-          // en utilisant la méthode 'reduce' sur le tableau 'participations'.
-          this.totalMedals = data.participations.reduce((acc, part) => acc + part.medalsCount, 0);
+              // Calcul des totaux
+              this.totalMedals = data.participations.reduce((acc, part) => acc + part.medalsCount, 0);
+              this.totalAthletes = data.participations.reduce((acc, part) => acc + part.athleteCount, 0);
 
-          // Calcule le nombre total d'athlètes ayant participé pour ce pays sur toutes ses participations.
-          this.totalAthletes = data.participations.reduce((acc, part) => acc + part.athleteCount, 0);
-
-          // Crée le graphique avec les données récupérées.
-          this.createChart();
-        } else {
-          // Si les données ne sont pas trouvées pour l'ID donné, affiche un message d'erreur dans la console.
-          console.error('Country not found');
-        }
+              // Appel de la méthode createChart après l'initialisation de la vue
+              setTimeout(() => {
+                this.createChart();
+              }, 0);
+            } else {
+              // Vous pouvez également rediriger vers une page NotFound si souhaité
+              this.router.navigate(['/not-found']);
+            }
+          })
+        );
       })
     );
   }
+
+
 
 
   createChart() {
