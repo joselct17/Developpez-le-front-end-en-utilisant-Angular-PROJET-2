@@ -61,11 +61,13 @@ export class DetailComponent implements OnInit, OnDestroy, AfterViewInit {
     }
   }
 
+
   createChart() {
     const chartElement = document.getElementById('detailChart') as HTMLCanvasElement;
     if (!chartElement || !this.participation) {
       return;
     }
+
 
     if (this.chart) {
       this.chart.destroy();
@@ -77,7 +79,7 @@ export class DetailComponent implements OnInit, OnDestroy, AfterViewInit {
         label: 'Medals Over the Years',
         data: this.participation?.participations.map(part => part.medalsCount) || [],
         borderColor: '#16959f',
-        fill: true
+        fill: false
       }]
     };
 
