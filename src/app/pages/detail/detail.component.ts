@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.scss']
 })
-export class DetailComponent implements OnInit, OnDestroy, AfterViewInit {
+export class DetailComponent implements OnInit, OnDestroy {
   participation: OlympicData | undefined;
   totalMedals: number = 0;
   totalAthletes: number = 0;
@@ -24,6 +24,10 @@ export class DetailComponent implements OnInit, OnDestroy, AfterViewInit {
   ) { }
 
   ngOnInit() {
+    //Appel des données au chargement
+    this.subscription.add(
+      this.olympicService.loadInitialData().subscribe()
+    );
     // Récupère l'ID du pays à partir de l'URL. 'snapshot' prend une image instantanée des paramètres de la route.
     // Le '!' à la fin indique à TypeScript que l'on sait que 'id' ne sera pas null ou undefined.
     const countryId = +this.route.snapshot.paramMap.get('id')!;
@@ -52,13 +56,6 @@ export class DetailComponent implements OnInit, OnDestroy, AfterViewInit {
         }
       })
     );
-  }
-
-
-  ngAfterViewInit(): void {
-    if (this.participation) {
-      this.createChart();
-    }
   }
 
 
