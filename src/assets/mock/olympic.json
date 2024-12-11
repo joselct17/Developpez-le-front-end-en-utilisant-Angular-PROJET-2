@@ -23,7 +23,15 @@
         "city": "Tokyo",
         "medalsCount": 40,
         "athleteCount": 381
+      },
+      {
+        "id": 4,
+        "year": 2024,
+        "city": "Paris",
+        "medalsCount":40 ,
+        "athleteCount":403
       }
+
     ]
   },
   {
@@ -50,6 +58,13 @@
         "city": "Tokyo",
         "medalsCount": 17,
         "athleteCount": 321
+      },
+      {
+        "id": 4,
+        "year": 2024,
+        "city": "Paris",
+        "medalsCount":18 ,
+        "athleteCount": 401
       }
     ]
   },
@@ -77,6 +92,13 @@
         "city": "Tokyo",
         "medalsCount": 113,
         "athleteCount": 626
+      },
+      {
+        "id": 4,
+        "year": 2024,
+        "city": "Paris",
+        "medalsCount":125 ,
+        "athleteCount":592
       }
     ]
   },
@@ -104,6 +126,13 @@
         "city": "Tokyo",
         "medalsCount": 37,
         "athleteCount": 425
+      },
+      {
+        "id": 4,
+        "year": 2024,
+        "city": "Paris",
+        "medalsCount":33 ,
+        "athleteCount":427
       }
     ]
   },
@@ -131,6 +160,13 @@
         "city": "Tokyo",
         "medalsCount": 33,
         "athleteCount": 403
+      },
+      {
+        "id": 4,
+        "year": 2024,
+        "city": "Paris",
+        "medalsCount":64 ,
+        "athleteCount": 571
       }
     ]
   }

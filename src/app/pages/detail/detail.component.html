@@ -1,0 +1,29 @@
+<div class="detail-container" *ngIf="participation">
+    <h1>{{ participation.country }} - Olympic History</h1>
+  <div class="country-info">
+    <div class="info-box">
+        <strong>Total Participations</strong>
+        <div class="number">
+      {{ participation.participations.length }}
+        </div>
+    </div>
+    <div class="info-box">
+        <strong>Total Medals</strong>
+        <div class="number">
+          {{ totalMedals }}
+        </div>
+    </div>
+    <div class="info-box">
+        <strong>Total Athletes</strong>
+        <div class="number">
+      {{ totalAthletes }}
+        </div>
+    </div>
+  </div>
+  <div>
+    <canvas id="detailChart"></canvas>
+  </div>
+  <button routerLink="/dashboard">Back to Dashboard</button>
+</div>
+
+
